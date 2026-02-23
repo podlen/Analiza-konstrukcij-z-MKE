@@ -14,7 +14,7 @@ Geom. model vključuje vse elemente geometrijskega območja analiziranega proble
 
 Poenostavimo lahko na več načinov:
 - [ ] simetrije
-- [ ] če je vel enakih elementov - upoštevamo le enega (lopatice turbine npr.)
+- [ ] če je več enakih elementov - upoštevamo le enega (lopatice turbine npr.)
 - [ ] Preproste poenostavitve - glave vijakov, navoji vijakov. Zmanjšamo kompleksnost mreže, brez da prizadenemo natančnost izračuna.
 ## 2. Značilnosti fizikalnega modela.
 Fizikalni model popisuje **fizikalno dogajanje** v analiziranem območju. To ne pomeni enačbe $\rightarrow$ te so v matematičnem modelu.
@@ -27,7 +27,7 @@ Fizikalno območje v obravnavanem območju je lahko povezano:
 - [ ] dinamika tekočin
 - [ ] ipd.
 
-Dogajanje je lahko časovno spremenljivo ali nespremenljivo.
+Dogajanje je lahko časovno spremenljivo ($\frac{\partial }{\partial t}\neq 0$) ali nespremenljivo($\frac{\partial }{\partial t} = 0$).
 
 Razumevanje fizikalnega dogajanje je ključno, saj nam napačen fizikalni model vrača napačne rešitve problema - tudi če je numerični model napreden.
 
