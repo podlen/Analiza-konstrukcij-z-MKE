@@ -103,4 +103,4 @@ MKE:
 MKR:
 - [ ] Primarna količina je izpolnjena eksaktno, sekundarna pa aproksimativno (diferenčne sheme)
 MKE:
-- [ ] Primarna količina je izpolnjena eksaktno, sekundarna količina pa je v splošnem aproksimativna. Izjema je končni element palice – v šibki integralski formulaciji je notranja osna sila eksaktna, ker je pravi potek osne sile po elementu konstanten, linearne bazne funkcije pa konstantno polje odvodov eksaktno opišejo.
+- [ ] Primarna in sekundarna količina sta izpolnjeni eksaktno. To sledi iz izpeljave in *per-partes* integracije, ki znižuje red odvoda za 1 stopnjo na enkrat. Tako pridemo do eksaktnih izrazov za sekundarne robne pogoje.
