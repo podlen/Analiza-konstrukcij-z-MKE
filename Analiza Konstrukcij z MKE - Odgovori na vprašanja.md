@@ -96,7 +96,10 @@ MKR:
 - [ ] DE je izpolnjena po točkah. Med točke lahko napnemo aporksimacijsko funkcijo. 
 MKE:
 - [ ] DE je izpolnjena po celotnem območju (ne nunjo eksaktno)
+
 **Upoštevanje RP**
+
+
 MKR:
 - [ ] Primarna količina je izpolnjena eksaktno, sekundarna pa aproksimativno (diferenčne sheme)
 MKE:
