@@ -7,6 +7,7 @@ file_creation: 2026-02-23
 ---
 Zbirka odgovorov na vprašanja pri predmetu analiza konstrukcij z MKE.
 
+# Predavanje 1 - 16.2.2026
 ## 1. Značilnosti geometrijskega modela.
 Geometrijski model popisuje **geometrijski prostor** analiziranega območja. Ponavadi geometrijski model izdelamo s CAD programi.
 
@@ -37,6 +38,7 @@ Razumevanje fizikalnega modela nam omogoča tudi vrednotenje rezultatov - pogled
 
 Matematični model opisuje fizikalno dogajanje z enačbami. Treba se je zavedati, da je matematični model približek dejanskega dogajanja - rabimo vedeti pod kakšnimi pogoji lahko enačbo uporabimo. 
 
+# Predavanje 2 - 23.2.2026
 ## 4. Značilnosti numeričnega modela.
 
 Numerični model lahko enačbe izpolnjuje **eksaktno** - eksaktno reševanje:
@@ -98,4 +100,4 @@ MKE:
 MKR:
 - [ ] Primarna količina je izpolnjena eksaktno, sekundarna pa aproksimativno (diferenčne sheme)
 MKE:
-- [ ] primarna količina je izpolnjena eksaktno, sekundarna pa eksaktno (če v sekundarni spremenljivki nastopa prvi odvod iskane funkcije), ali pa aproksimativno(če v sekundarni spremenljivki nastopa višji odvod iskane funkcije) (**check if true**)
+- [ ] Primarna količina je izpolnjena eksaktno, sekundarna količina pa je v splošnem aproksimativna. Izjema je končni element palice – v šibki integralski formulaciji je notranja osna sila eksaktna, ker je pravi potek osne sile po elementu konstanten, linearne bazne funkcije pa konstantno polje odvodov eksaktno opišejo.
