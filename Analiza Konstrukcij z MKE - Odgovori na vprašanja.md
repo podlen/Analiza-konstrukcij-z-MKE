@@ -107,16 +107,16 @@ MKE:
 # Predavanje 3: 2.3.2026
 
 ## 11. Opiši izhodišča MRE.
-MRE je zasnovana na integralski formulaciji - natančneje na inverzni obliki integralski formulaciji.
+MRE je zasnovana na integralski formulaciji - natančneje na inverzni obliki integralske formulacije.
 
-Ograja obravnavanega območja je razdeljena na podobmočja - robne elemente. V območju znotraj robnega elementa **aproksimiramo** neznane veličine.
+Ograja obravnavanega območja je razdeljena na pod-območja - robne elemente. V območju znotraj robnega elementa **aproksimiramo** neznane veličine.
 
 MRE se uporablja za potencialne probleme. Uporablja se tudi za reševanje fizikalnih problemov, ki niso prostorsko omejeni - verjetno kak elektromagentizem.
 ## 12. Prednosti in slabosti MRE.
 **Prednosti**:
 - Reševanje območnega problema prevedemo na iskanje neznanih veličin na ograji. Elementi so samo na robu območja, kar pomeni, da imamo za izračunati manj neznank.
-- Primerno za reševanje potencialnih problemov (gravitacijski potencial, ustaljen prevod toplote, električni potenical)
-- Primerno za reševanje fizikalnih problem, ki niso prostorsko omejeni
+- Primerno za reševanje potencialnih problemov (gravitacijski potencial, ustaljen prevod toplote, električni potencial)
+- Primerno za reševanje fizikalnih problemov, ki niso prostorsko omejeni
 **Slabosti**:
 - Poln sistem enačb
 - Za izračun vrednosti znotraj obravnavanega območja so potrebni dodatni izračuni.
@@ -131,11 +131,11 @@ Pogoji prehoda so pri MKE eksaktno določeni (primarna in sekundarna spremenljiv
 ## 14. Opiši izhodišča MKV.
 MKV je zasnovana na integralski formulaciji problema, pri čemer se integral po območju (z Gaussovim izrekom) preoblikuje na integral po ograji, ki omejuje obravnavano območje. 
 
-Obravnavano območje je razdeljeno na podobmočje, ki jih imenujemo končni volumni. Znotraj KV so neznane vrednosti **primarne veličine v eni točki**.
+Obravnavano območje je razdeljeno na pod-območja, ki jih imenujemo končni volumni. Znotraj KV so neznane vrednosti **primarne veličine v eni točki**.
 ## 15. Prednosti in slabosti MKV.
 **Prednosti**:
 - reševanje območnega problema prevedemo na iskanje vrednosti v posamezni točki - diskretizacija.
-- enostavno izpolnjevanje PP med celicami oz. podobmočji.
+- enostavno izpolnjevanje PP med celicami oz. pod-območji.
 - Podobno kot MKR - primarna spremenljivka v točki.
 - Primerno za reševanje problemov prevoda toplote, toka tekočine
 
@@ -146,13 +146,13 @@ Obe metodi rešujeta problem z iskanjem vrednosti primarne veličine v diskretni
 
 Razlikujeta se v matematični formulaciji. MKR temelji na aproksimaciji odvodov z funkcijskimi vrednostmi (s pomočjo razvoja v Taylorjevo vrsto). MKV pa temelji na integralski formulaciji, ki jo prevedemo na integral po ograji območja. Integral se nato aproksimira enako kot pri MKR. 
 
-Pri MKR je primarni robni pogoj izpolnjen eksaktno (točka mora biti na robu območja). Sekundarni RP pa so aproksimirani preko vrednosti primarne spremenljivke. Pri MKV je ravno obratno. Sekundarni RP so eksaktno izpolnjeni, primarni RP pa so izpolnjeni aproksimativno z interpolacijo od računske točke KV do roba..
+Pri MKR je primarni robni pogoj izpolnjen eksaktno (točka mora biti na robu območja). Sekundarni RP pa so aproksimirani preko vrednosti primarne spremenljivke. Pri MKV je ravno obratno. Sekundarni RP so eksaktno izpolnjeni, primarni RP pa so izpolnjeni aproksimativno z interpolacijo od računske točke KV do roba.
 
-Pogoji prehoda so izpolnjeni enako kot RP. Za MKR so primarni PP izpolnjeni eksaktno, sekundarni pa aproksimativno. Pri MKV je obratno.
+Za MKR so primarni PP izpolnjeni eksaktno, sekundarni pa aproksimativno. Pri MKV je obratno.
 ## 17. Primerjaj MKE in MKV.
 Obe metodi izvirata iz integralske formulacije problema. Pri MKE neznano veličino aproksimiramo po celotnem območju končnega elementa. Pri MKV pa se integral po območju prevede na integral po površini (ograji volumna), primarna veličina pa se izračuna le v eni diskretni točki znotraj posameznega KV.
 
-Robni pogoji so pri MKE izpolnjeni eksaktno (primarni in sekundarni). Pri MKV so primarni RP izpolnjeni aproksimativno (z interpolacjo). Sekundarni RP so izpolnjeni eksaktno. 
+Robni pogoji so pri MKE izpolnjeni eksaktno (primarni in sekundarni). Pri MKV so primarni RP izpolnjeni aproksimativno (z interpolacijo). Sekundarni RP so izpolnjeni eksaktno. 
 
 Pogoji prehoda so pri MKE izpolnjeni eksaktno. Pri MKV je pogoj prehoda za sekundarne spremenljivke izpolnjen eksaktno, vrednost primarne spremenljivke med KV pa je določena aproksimativno.
 ## 18. Komentiraj izpolnjevanje diferencialne enačbe, robnih pogojev in pogojev konsistentnosti prehoda v primeru uporabe MKR.
@@ -213,6 +213,6 @@ Na splošno so boljši KE tisti, ki imajo več vozlišč, saj nam dajo bolj nata
 
 Z več vozlišči se podaljša čas izračuna. Prav tako je potrebno v poštev vzeti čas za pripravo mreže. 
 
-Pri izbiri oblike KE se lahko navežemo se na mreženje, ki vpliva na obliko uporabljenih KE:
+Pri izbiri oblike KE se lahko navežemo še na mreženje, ki vpliva na obliko uporabljenih KE:
 - **Prosto mreženje**: Uporablja se predvsem trikotne (2D) in tetraedrične (3D) KE. Priprava mreže je hitra in avtomatizirana, primerna za zelo kompleksne oblike.
 - **Strukturirano mreženje:** Uporablja se štirikotne (2D) in heksaedrične/kockaste (3D) elemente. Zahteva več časa za pripravo geometrije, a pogosto daje boljše rezultate.
