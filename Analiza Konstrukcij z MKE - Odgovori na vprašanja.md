@@ -168,7 +168,8 @@ Primarni in sekundarni RP so izpolnjeni eksaktno.
 
 Za PP velja enako kot RP.
 ## 20. Komentiraj izpolnjevanje diferencialne enačbe, robnih pogojev in pogojev konsistentnosti prehoda v primeru uporabe MRE.
-Diferencialna enačba je **v notranjosti območja izpolnjena eksaktno**, aproksimativno pa se rešuje integralska enačba po ograji območja.
+Diferencialna enačba je **v notranjosti območja izpolnjena eksaktno**, po ograji območja pa izpolnjena aporksimativno.
+
 Primarni in sekundarni RP so izpolnjeni eksaktno.
 
 Ker so elementi samo na robu območja, PP ni.
