@@ -104,14 +104,14 @@ MKR:
 - [ ] Primarna količina je izpolnjena eksaktno, sekundarna pa aproksimativno (diferenčne sheme)
 MKE:
 - [ ] Primarna in sekundarna količina sta izpolnjeni eksaktno. To sledi iz izpeljave in *per-partes* integracije, ki znižuje red odvoda za 1 stopnjo na enkrat. Tako pridemo do eksaktnih izrazov za sekundarne robne pogoje.
-# Predavanje 3: 2.3.2026
+# Predavanje 3 - 2.3.2026
 
 ## 11. Opiši izhodišča MRE.
 MRE je zasnovana na integralski formulaciji - natančneje na inverzni obliki integralske formulacije.
 
-Ograja obravnavanega območja je razdeljena na pod-območja - robne elemente. V območju znotraj robnega elementa **aproksimiramo** neznane veličine.
+Ograja obravnavanega območja je razdeljena na pod-območja - robne elemente. V območju znotraj robnega elementa(v robnem elementu) **aproksimiramo** neznane veličine.
 
-MRE se uporablja za potencialne probleme. Uporablja se tudi za reševanje fizikalnih problemov, ki niso prostorsko omejeni - verjetno kak elektromagentizem.
+MRE se uporablja za potencialne probleme. Uporablja se tudi za reševanje fizikalnih problemov, ki niso prostorsko omejeni - verjetno kak elektromagnetizem.
 ## 12. Prednosti in slabosti MRE.
 **Prednosti**:
 - Reševanje območnega problema prevedemo na iskanje neznanih veličin na ograji. Elementi so samo na robu območja, kar pomeni, da imamo za izračunati manj neznank.
@@ -144,7 +144,7 @@ Obravnavano območje je razdeljeno na pod-območja, ki jih imenujemo končni vol
 ## 16. Primerjaj MKR in MKV.
 Obe metodi rešujeta problem z iskanjem vrednosti primarne veličine v diskretnih točkah območja. 
 
-Razlikujeta se v matematični formulaciji. MKR temelji na aproksimaciji odvodov z funkcijskimi vrednostmi (s pomočjo razvoja v Taylorjevo vrsto). MKV pa temelji na integralski formulaciji, ki jo prevedemo na integral po ograji območja. Integral se nato aproksimira enako kot pri MKR. 
+Razlikujeta se v matematični formulaciji. MKR temelji na aproksimaciji odvodov s funkcijskimi vrednostmi (s pomočjo razvoja v Taylorjevo vrsto). MKV pa temelji na integralski formulaciji, ki jo prevedemo na integral po ograji območja. Integral se nato aproksimira enako kot pri MKR. 
 
 Pri MKR je primarni robni pogoj izpolnjen eksaktno (točka mora biti na robu območja). Sekundarni RP pa so aproksimirani preko vrednosti primarne spremenljivke. Pri MKV je ravno obratno. Sekundarni RP so eksaktno izpolnjeni, primarni RP pa so izpolnjeni aproksimativno z interpolacijo od računske točke KV do roba.
 
@@ -212,10 +212,80 @@ Glede na geometrijski model lahko izbiramo med različnimi končnimi elementi:
 - Tetraedri
 - Prizmatični KE
 
-Na splošno so boljši KE tisti, ki imajo več vozlišč, saj nam dajo bolj natančno rešitev. Prav tako lahko KE z več vozlišči znotraj elementa uporabljajo bolj kompleksno interpolacijsko funkcijo - zato rečemo, da so KE z več vozlišči bolj natančni.
+Na splošno so boljši KE tisti, ki imajo več vozlišč, saj nam dajo bolj natančno rešitev. Prav tako lahko KE z več vozlišči znotraj elementa uporabljajo bolj kompleksno interpolacijsko funkcijo - zato rečemo, da so KE z več vozlišči bolj natančn
 
 Z več vozlišči se podaljša čas izračuna. Prav tako je potrebno v poštev vzeti čas za pripravo mreže. 
 
 Pri izbiri oblike KE se lahko navežemo še na mreženje, ki vpliva na obliko uporabljenih KE:
 - **Prosto mreženje**: Uporablja se predvsem trikotne (2D) in tetraedrične (3D) KE. Priprava mreže je hitra in avtomatizirana, primerna za zelo kompleksne oblike.
 - **Strukturirano mreženje:** Uporablja se štirikotne (2D) in heksaedrične/kockaste (3D) elemente. Zahteva več časa za pripravo geometrije, a pogosto daje boljše rezultate.
+
+# Predavanje 4 - 9.3.2026
+## 24. Prednosti in slabosti prostega mreženja.
+**Prednosti**:
+- Hitro in avtomatsko
+- Dobro ko hočemo videti, kje so kritična mesta
+- Omogoča mreženje kompleksnih oblik
+
+**Slabosti**:
+- Dobljen rezultat je manj natančen, kot če bi uporabljali strukturirano mrežo
+- Uporabljeni so trikotni oz. tetraedrični KE. Ti elementi so bolj togi - zato jih za natančno rešitev potrebujemo več kot pri strukturirani mreži. 
+## 25. Prednosti in slabosti strukturiranega mreženja.
+**Prednosti**:
+- Mreža je prilagojena problemu.
+- Bolj natančni izračuni, saj so uporabljeni heksaedrični, kvadratni KE.
+**Slabosti**:
+- Ker je mreža specifična glede na problem jo moramo sami narediti, kar vzame več časa.
+## 26. Kako lahko vplivamo na obliko mreže 2D KE.
+Na obliko mreže 2D KE vplivamo tako, da predpišemo število elementov oz. število vozlišč na robu območja oz. pod-območja. Vozlišča na ograji lahko razporedimo enakomerno ali pa uporabimo "bias", ki v določeno smer zgosti elemente.
+
+Prav tako lahko na obliko mreže vplivamo z izbiro geometrije KE. Lahko izberemo trikotne KE, s katerimi je mreženje vedno izvedljivo.
+
+Lahko izberemo štirikotne KE, s katerimi mreženje ni vedno izvedljivo. (Območje razdeljeno na pod-območja, ki imajo 3,4 ali 5 robov)
+
+Lahko uporabimo tudi kombinacijo obeh elementov obeh elementov. Moramo poskrbeti da imamo na kritičnih območjih štirikotne KE.
+
+Na mrežo lahko vplivamo tudi z načinom delitve na pod-območja.
+
+
+## 27. Kriterij za oceno kvalitete mreže 2D KE.
+Kriterijev za oceno mreže je več:
+- razmerje med najdaljšo on najkrajšo stranico elementa:
+	- $$1\leq f_r=\frac{a}{b}\leq \infty$$
+	- $$f_{max}\leq5$$
+	- ![[Pasted image 20260309214606.png]]
+- največji in najmanjši notranjo kot trikotnega ali štirikotnega elementa
+	- $$0°\leq\alpha\leq180°$$
+	- $$45°\leq\alpha_{min}$$
+	- $$\alpha_{max}\leq135°$$
+	- ![[Pasted image 20260309214748.png]]
+- oblikovni faktor (samo za trikotni KE)
+	- $$1\geq f_\Delta=\frac{A_\Delta}{A_{\Delta id}}\geq0$$
+	- $$f_{\Delta min}\geq0.5$$
+	- ![[Pasted image 20260309214946.png]]
+
+- odstopanje stranice KE od geometrije mreženega območja
+	- $$0\leq f_g=\frac{h}{L}\leq \infty$$
+	- $$f_{gmax}\leq0.1$$
+	- ![[Pasted image 20260309215053.png]]
+## 28. Kako lahko vplivamo na obliko mreže 3D KE.
+Pri prostem mreženju na obliko vplivamo z mrežo, narejeno na površinah (s trikotniki), ki definirajo volumen. Mrežo na površini definiramo z gostoto točk na ograji (enakomerno ali "bias"). Na gostoto tetraedrov v sami notranjosti volumnu lahko vplivamo le delno (z načinom generacije) in predvsem posredno preko mreže na površini.
+
+Pri strukturiranem mreženju na obliko mreže vplivamo tako, da kompleksno geometrijo razdelimo na enostavna pod-območja ali pa (pri swept meshingu) določimo izhodiščno ploskev, na kateri je 2D mreža, ter izberemo smer generiranja heksaedričnih KE v prostor.
+## 29. Kriterij za oceno kvalitete mreže 3D KE.
+Kriteriji za oceno kvalitete mreže so enaki kot pri 2D mreži:
+- razmerje med najdaljšo in najkrajšo stranico
+- največji in najmanjši notranji kot na ploskvi, ki omejuje volumski KE
+- oblikovni faktor (se računa le za tetraedrični KE)
+	- $$1\geq f_\Delta=\frac{V_\Delta}{V_{\Delta id}}\geq0$$
+	- $$f_{\Delta min}\geq0.5$$
+- odstopanje ploskve KE od geometrije mreženega območja
+## 30. Načini strukturiranega mreženja.
+Pri mreženju 2D struktur moramo celotno območje razdeliti na pod-območja, ki imajo 3,4 ali 5 robov. Program lahko na takem območju naredi strukturirano mrežo z 4 kotnimi elementi. 
+
+Pri mreženju volumskih modelov imamo 2 možnosti:
+
+Ena možnost je da geometrijo razdelimo na pod-območja. Ta pod-območja ne smejo vsebovati lukenj, vrinjenih ploskev, robov in točk. Odstraniti moramo tudi vse nepotrebne elemente  - pomembnost priprave geometrije. 
+Po temu ko smo območje razdelili na pod-območja določimo koliko elementov oz. vozlišč bo na ograjah med pod-območji. Lahko so razporejena enakomerno ali ne. Po temu ko smo to naredili lahko naredimo heksaedrično strukturirano mrežo. 
+
+Drug način izdelave strukturirane mreže je sweep mesh. Na čelni ploskvi geometrije moramo narediti strukturirano mrežo - če želimo imeti heksaedrične KE moramo uporabiti štirikotne elemente. Nato izberemo število vozlišč na robovih čelne ploskve in število vozlišč v vzdolžni smeri. Nato lahko generiramo mrežo, ki ima po celotnem prerezu enako topologijo tj. število vozlišč in število elementov.
