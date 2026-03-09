@@ -199,6 +199,8 @@ Glede na geometrijski model lahko izbiramo med različnimi končnimi elementi:
 - 3-vozliščni KE
 - Število vozlišč v KE vpliva na natančnost rešitve. (enako velik 3-vozliščni KE bolj natančno popiše dejansko stanje kot 2-vozliščni KE). 
 - 3-vozliščni KE lahko bolj natančno popišejo geometrijo - z njimi lahko popisujemo ukrivljene oblike.
+
+
 **2D KE**:
 - 3-vozliščni KE
 - 4-vozliščni KE
