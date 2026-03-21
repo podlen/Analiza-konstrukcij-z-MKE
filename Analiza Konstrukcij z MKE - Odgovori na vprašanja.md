@@ -243,7 +243,7 @@ Prav tako lahko na obliko mreže vplivamo z izbiro geometrije KE. Lahko izberemo
 
 Lahko izberemo štirikotne KE, s katerimi mreženje ni vedno izvedljivo. (Območje razdeljeno na pod-območja, ki imajo 3,4 ali 5 robov)
 
-Lahko uporabimo tudi kombinacijo obeh elementov obeh elementov. Moramo poskrbeti da imamo na kritičnih območjih štirikotne KE.
+Lahko uporabimo tudi kombinacijo obeh elementov. Moramo poskrbeti da imamo na kritičnih območjih štirikotne KE.
 
 Na mrežo lahko vplivamo tudi z načinom delitve na pod-območja.
 
@@ -254,7 +254,8 @@ Kriterijev za oceno mreže je več:
 	- $$1\leq f_r=\frac{a}{b}\leq \infty$$
 	- $$f_{max}\leq5$$
 	- ![[Pasted image 20260309214606.png]]
-- največji in najmanjši notranjo kot trikotnega ali štirikotnega elementa
+	
+- največji in najmanjši notranji kot trikotnega ali štirikotnega elementa
 	- $$0°\leq\alpha\leq180°$$
 	- $$45°\leq\alpha_{min}$$
 	- $$\alpha_{max}\leq135°$$
@@ -269,7 +270,7 @@ Kriterijev za oceno mreže je več:
 	- $$f_{gmax}\leq0.1$$
 	- ![[Pasted image 20260309215053.png]]
 ## 28. Kako lahko vplivamo na obliko mreže 3D KE.
-Pri prostem mreženju na obliko vplivamo z mrežo, narejeno na površinah (s trikotniki), ki definirajo volumen. Mrežo na površini definiramo z gostoto točk na ograji (enakomerno ali "bias"). Na gostoto tetraedrov v sami notranjosti volumnu lahko vplivamo le delno (z načinom generacije) in predvsem posredno preko mreže na površini.
+Pri prostem mreženju na obliko vplivamo z mrežo, narejeno na površinah (s trikotniki), ki definirajo volumen. Mrežo na površini definiramo z gostoto točk na ograji (enakomerno ali "bias"). Na gostoto tetraedrov v sami notranjosti volumna lahko vplivamo le delno (z načinom generacije) in predvsem posredno preko mreže na površini.
 
 Pri strukturiranem mreženju na obliko mreže vplivamo tako, da kompleksno geometrijo razdelimo na enostavna pod-območja ali pa (pri swept meshingu) določimo izhodiščno ploskev, na kateri je 2D mreža, ter izberemo smer generiranja heksaedričnih KE v prostor.
 ## 29. Kriterij za oceno kvalitete mreže 3D KE.
@@ -286,6 +287,67 @@ Pri mreženju 2D struktur moramo celotno območje razdeliti na pod-območja, ki 
 Pri mreženju volumskih modelov imamo 2 možnosti:
 
 Ena možnost je da geometrijo razdelimo na pod-območja. Ta pod-območja ne smejo vsebovati lukenj, vrinjenih ploskev, robov in točk. Odstraniti moramo tudi vse nepotrebne elemente  - pomembnost priprave geometrije. 
-Po temu ko smo območje razdelili na pod-območja določimo koliko elementov oz. vozlišč bo na ograjah med pod-območji. Lahko so razporejena enakomerno ali ne. Po temu ko smo to naredili lahko naredimo heksaedrično strukturirano mrežo. 
+Po temu ko smo območje razdelili na pod-območja določimo koliko elementov oz. vozlišč bo na ograjah (na robovih) med pod-območji. Lahko so razporejena enakomerno ali ne. Po temu ko smo to naredili lahko naredimo heksaedrično strukturirano mrežo. 
 
 Drug način izdelave strukturirane mreže je sweep mesh. Na čelni ploskvi geometrije moramo narediti strukturirano mrežo - če želimo imeti heksaedrične KE moramo uporabiti štirikotne elemente. Nato izberemo število vozlišč na robovih čelne ploskve in število vozlišč v vzdolžni smeri. Nato lahko generiramo mrežo, ki ima po celotnem prerezu enako topologijo tj. število vozlišč in število elementov.
+
+# Predavanje 5 - 16.3.2026
+## 31. Določitev fizikalnih lastnosti materiala.
+
+Fizikalne lastnosti problema nam poleg diferencialne enačbe, robnih pogojev in območja reševanja določajo lastnosti problema oz. sistema, ki ga hočemo rešiti.
+
+Ko rešujemo reduciran problem - npr. upogib 3D konstrukcije v 1D moramo definirati dodatne materialne lastnosti, ki nam omogočajo, da upoštevamo lastnosti 3D geometrije v 1D.
+## 32. Določitev geometrijskih lastnosti ploskovnih KE.
+Ploskovnim elementom moramo določiti še debelino KE in pa normalo na površino KE.
+
+## 33. Določitev geometrijskih lastnosti linijskih KE.
+
+Linijskim elementom moramo definirati karakteristike prereza:
+- ploščina prereza - $A$
+- težiščni vztrajnostni momenti ploskve - $I_x, I_y$ in $I_{xy}$
+- torzijski vztrajnostni moment - $I_t$
+
+Definirati moramo tudi lego prereza glede na težiščnico.
+
+## 34. Izpeljava šibke integralske enačbe za časovno ustaljen prostorski prevod toplote.
+
+Najprej zapišemo enačbo za časovno ustaljen prevod toplote:
+$$k\Delta T + q_v = 0$$
+Prvi člen enačbe lahko zapišemo tudi preko Fourierovega zakona: $$q = -k\nabla \cdot T=-k\begin{Bmatrix}\frac{\partial}{\partial x}\\\frac{\partial}{\partial y}\\\frac{\partial}{\partial z}\end{Bmatrix}$$
+
+Vodilno enačbo lahko zapišemo kot: $$-\nabla^Tq + q_v = 0$$
+$$\begin{Bmatrix}\frac{\partial}{\partial x}\frac{\partial}{\partial y}\frac{\partial}{\partial z}\end{Bmatrix}(-k)\begin{Bmatrix}\frac{\partial T}{\partial x}\\\frac{\partial T}{\partial y}\\\frac{\partial T}{\partial z}\end{Bmatrix}+q_v = 0$$
+
+Enačbo integriramo in pomnožimo z $v(x)$:$$\int_\Omega(-\nabla^Tq)v\space d\Omega + \int_\Omega q_vv\space d\Omega = 0$$
+Osredotočimo se na izraz v prvem integralu in zapišimo sledeče: $$\nabla^T\cdot(q v) = (\nabla^T\cdot q)v + q^T(\nabla\cdot v)$$
+$$-(\nabla^T\cdot q)v = -\nabla^T\cdot(qv) + q^T(\nabla \cdot v)$$
+Izraz lahko vstavimo v integral in preko Gaussovega izreka dobimo:$$\begin{align}\int_\Omega(-\nabla^T\cdot q)v\space d\Omega =-\int_\Omega \nabla^T\cdot(qv)\space d\Omega + \int_\Omega q^T(\nabla\cdot v)\space d\Omega\\=-\int_\Gamma q^Tv\space n\space d\Gamma + \int_\Omega q^T(\nabla\cdot v)\space d\Omega\end{align}$$
+Splošna enačba potem zgleda tako:$$\int_\Omega q^T(\nabla\cdot v)\space d\Omega - \int_\Gamma (q^Tn)v\space d\Gamma + \int_\Omega q_vv\space d\Omega = 0$$
+Toplotni tok v prvem členu lahko zapišemo s Fourierovim zakonom $q^T = -k\nabla \cdot T$. Enačba se preoblikuje v: $$k\int_\Omega(\nabla\cdot T)(\nabla\cdot v)d\Omega = -\int_\Gamma q_n v \space d\Gamma+ \int_\Omega q_vv\space d\Omega $$
+Enačbo lahko razpišemo po členih: $$k\int_\Omega \begin{Bmatrix}
+\frac{\partial T}{\partial x}\frac{\partial v}{\partial x}+
+\frac{\partial T}{\partial y}\frac{\partial v}{\partial y}+
+\frac{\partial T}{\partial z}\frac{\partial v}{\partial z}+
+\end{Bmatrix}d\Omega = -\int_\Gamma q_nv\space d\Gamma + \int_\Omega q_vv\space d\Omega$$
+## 35. Interpolacija temperaturnega polja po območju prostorskega heksaedričnega KE.
+
+Po območju KE se temperaturno polje interpolira preko oblikovnih funkcij:$$T(x,y,z) \approx\hat T(x,y,z) = \sum_{j=1}^{N_v}T_j\psi_j(x,y,z)$$
+Vsota gre od 1 do števila vozlišč v končnem elementu (v primeru heksaedričnega KE je to vsaj 8 - KE ima vsaj 8 vozlišč).
+
+## 36. Interpolacija geometrije v primeru izoparametričnega KE. 
+
+Izoparametrični KE nam omogočajo, da popišemo bolj kompleksno geometrijo - izoparametrični elementi so lahko "nepravilne" oblike in lahko bolje popisujejo geometrijo.
+
+Nepravilno obliko dobimo tako, da KE iz naravnega KS preslikamo v kartezični KS. To naredimo preko naslednjih funkcij:$$x=x(\tilde x, \tilde y, \tilde z) = \sum_{j=1}^{N_v}x_j\tilde \psi_j(\tilde x,\tilde y, \tilde z)$$
+$$y = y(\tilde x,\tilde y, \tilde z) = \sum_{j=1}^{N_v}y_j\tilde\psi_j(\tilde x,\tilde y, \tilde z)$$
+$$z = z(\tilde x,\tilde y, \tilde z) = \sum_{j=1}^{N_v}z_j\tilde\psi_j(\tilde x,\tilde y, \tilde z)$$
+
+## 37. Razlika med Kartezijskim in naravnim koordinatnim sistemom.
+
+Naravni koordinatni sistem je namišljen prostor, kjer je geometrija končnega elementa "pravilna", pravokotna. Koordinatni sistem je brez-dimenzijski (koordinate $(\tilde x,\tilde y, \tilde z)$ gredo običajno od -1 do +1), kar poenostavi numerično integriranje.
+
+Za KE v naravnem koordinatnem sistemu lahko brez problema zapišemo funkcijo za interpolacijo primarne spremenljivke.
+
+V kartezičnem koordinatnem sistemu je lahko KE poljubne oblike - zanj ne moremo napisati interpolacijskih funkcij. Zato rabimo interpolacijsko funkcijo preslikati iz naravnega v kartezični koordinatni sistem.
+## 38. Kaj predstavlja Jacobijeva matrika?
+Jacobijeva matrika predstavlja parcialne odvode kartezičnih koordinat $(x,y,z)$ po naravnih koordinatah $(\tilde x,\tilde y, \tilde z)$.  Predstavlja matematično transformacijo (preslikavo) med obema koordinatnima sistemoma in omogoča preračunavanje iz dejanske geometrije v referenčni naravni sistem elementa.
