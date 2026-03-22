@@ -312,23 +312,58 @@ Definirati moramo tudi lego prereza glede na težiščnico.
 ## 34. Izpeljava šibke integralske enačbe za časovno ustaljen prostorski prevod toplote.
 
 Najprej zapišemo enačbo za časovno ustaljen prevod toplote:
+
 $$k\Delta T + q_v = 0$$
-Prvi člen enačbe lahko zapišemo tudi preko Fourierovega zakona: $$q = -k\nabla \cdot T=-k\begin{Bmatrix}\frac{\partial}{\partial x}\\\frac{\partial}{\partial y}\\\frac{\partial}{\partial z}\end{Bmatrix}$$
 
-Vodilno enačbo lahko zapišemo kot: $$-\nabla^Tq + q_v = 0$$
-$$\begin{Bmatrix}\frac{\partial}{\partial x}\frac{\partial}{\partial y}\frac{\partial}{\partial z}\end{Bmatrix}(-k)\begin{Bmatrix}\frac{\partial T}{\partial x}\\\frac{\partial T}{\partial y}\\\frac{\partial T}{\partial z}\end{Bmatrix}+q_v = 0$$
+Prvi člen enačbe lahko zapišemo tudi preko Fourierovega zakona:
 
-Enačbo integriramo in pomnožimo z $v(x)$:$$\int_\Omega(-\nabla^Tq)v\space d\Omega + \int_\Omega q_vv\space d\Omega = 0$$
-Osredotočimo se na izraz v prvem integralu in zapišimo sledeče: $$\nabla^T\cdot(q v) = (\nabla^T\cdot q)v + q^T(\nabla\cdot v)$$
-$$-(\nabla^T\cdot q)v = -\nabla^T\cdot(qv) + q^T(\nabla \cdot v)$$
-Izraz lahko vstavimo v integral in preko Gaussovega izreka dobimo:$$\begin{align}\int_\Omega(-\nabla^T\cdot q)v\space d\Omega =-\int_\Omega \nabla^T\cdot(qv)\space d\Omega + \int_\Omega q^T(\nabla\cdot v)\space d\Omega\\=-\int_\Gamma q^Tv\space n\space d\Gamma + \int_\Omega q^T(\nabla\cdot v)\space d\Omega\end{align}$$
-Splošna enačba potem zgleda tako:$$\int_\Omega q^T(\nabla\cdot v)\space d\Omega - \int_\Gamma (q^Tn)v\space d\Gamma + \int_\Omega q_vv\space d\Omega = 0$$
-Toplotni tok v prvem členu lahko zapišemo s Fourierovim zakonom $q^T = -k\nabla \cdot T$. Enačba se preoblikuje v: $$k\int_\Omega(\nabla\cdot T)(\nabla\cdot v)d\Omega = -\int_\Gamma q_n v \space d\Gamma+ \int_\Omega q_vv\space d\Omega $$
-Enačbo lahko razpišemo po členih: $$k\int_\Omega \begin{Bmatrix}
-\frac{\partial T}{\partial x}\frac{\partial v}{\partial x}+
-\frac{\partial T}{\partial y}\frac{\partial v}{\partial y}+
-\frac{\partial T}{\partial z}\frac{\partial v}{\partial z}+
-\end{Bmatrix}d\Omega = -\int_\Gamma q_nv\space d\Gamma + \int_\Omega q_vv\space d\Omega$$
+$$\mathbf{q} = -k\nabla T = -k\begin{Bmatrix}\frac{\partial T}{\partial x}\\\frac{\partial T}{\partial y}\\\frac{\partial T}{\partial z}\end{Bmatrix}$$
+
+Vodilno enačbo lahko zapišemo kot:
+
+$$-\nabla^T\cdot \mathbf{q} + q_v = 0$$
+
+$$\begin{Bmatrix}\frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z}\end{Bmatrix}(-k)\begin{Bmatrix}\frac{\partial T}{\partial x}\\\frac{\partial T}{\partial y}\\\frac{\partial T}{\partial z}\end{Bmatrix}+q_v = 0$$
+
+Enačbo integriramo in pomnožimo z $v(x)$:
+
+$$\int_\Omega(-\nabla^T\cdot \mathbf{q})\,v\, d\Omega + \int_\Omega q_v v\, d\Omega = 0$$
+
+Osredotočimo se na izraz v prvem integralu in zapišemo sledeče:
+
+---
+*Pri produktnem pravilu z divergenco velja, da kadar delujemo na produkt vektorskega polja $\mathbf{q}$ in skalarne funkcije $v$, dobimo:
+
+$$\nabla^T\cdot(\mathbf{q}\, v) = (\nabla^T\cdot \mathbf{q})\,v + \mathbf{q}^T(\nabla v)$$
+
+*Drugi člen vsebuje $\nabla v$ in ne $\nabla \cdot v$, ker je $v$ skalarna funkcija — divergenca 
+skalarја nima smisla. Operator $\nabla v$ predstavlja **gradient** skalarja $v$, ki vrne vektor parcialnih odvodov:*
+
+$$\nabla v = \begin{Bmatrix}\frac{\partial v}{\partial x}\\\frac{\partial v}{\partial y}\\\frac{\partial v}{\partial z}\end{Bmatrix}$$
+
+*S tem je skalarni produkt $\mathbf{q}^T(\nabla v)$ dimenzijsko skladen — gre za produkt dveh vektorjev*.*
+
+---
+$$\nabla^T\cdot(\mathbf{q}\, v) = (\nabla^T\cdot \mathbf{q})\,v + \mathbf{q}^T(\nabla v)$$
+
+$$-(\nabla^T\cdot \mathbf{q})\,v = -\nabla^T\cdot(\mathbf{q}\, v) + \mathbf{q}^T(\nabla v)$$
+
+Izraz lahko vstavimo v integral in preko Gaussovega izreka dobimo:
+
+$$\begin{align} \int_\Omega(-\nabla^T\cdot \mathbf{q})\,v\, d\Omega &= -\int_\Omega \nabla^T\cdot(\mathbf{q}\, v)\, d\Omega + \int_\Omega \mathbf{q}^T(\nabla v)\, d\Omega \\ &= -\int_\Gamma \mathbf{q}^T\mathbf{n}\, v\, d\Gamma + \int_\Omega \mathbf{q}^T(\nabla v)\, d\Omega \end{align}$$
+
+Splošna enačba potem zgleda tako:
+
+$$\int_\Omega \mathbf{q}^T(\nabla v)\, d\Omega - \int_\Gamma (\mathbf{q}^T\mathbf{n})\,v\, d\Gamma + \int_\Omega q_v v\, d\Omega = 0$$
+
+Toplotni tok v prvem členu lahko zapišemo s Fourierovim zakonom $\mathbf{q}^T = (-k\nabla T)^T$. Enačba se preoblikuje v:
+
+$$k\int_\Omega(\nabla T)^T(\nabla v)\,d\Omega = -\int_\Gamma q_n\, v\, d\Gamma + \int_\Omega q_v v\, d\Omega$$
+
+Enačbo lahko razpišemo po členih:
+
+$$k\int_\Omega \left(\frac{\partial T}{\partial x}\frac{\partial v}{\partial x} + \frac{\partial T}{\partial y}\frac{\partial v}{\partial y} + \frac{\partial T}{\partial z}\frac{\partial v}{\partial z}\right)d\Omega = -\int_\Gamma q_n\, v\, d\Gamma + \int_\Omega q_v v\, d\Omega$$
+
 ## 35. Interpolacija temperaturnega polja po območju prostorskega heksaedričnega KE.
 
 Po območju KE se temperaturno polje interpolira preko oblikovnih funkcij:$$T(x,y,z) \approx\hat T(x,y,z) = \sum_{j=1}^{N_v}T_j\psi_j(x,y,z)$$
