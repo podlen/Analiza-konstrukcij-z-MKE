@@ -317,7 +317,12 @@ $$k\Delta T + q_v = 0$$
 
 Prvi člen enačbe lahko zapišemo tudi preko Fourierovega zakona:
 
-$$\mathbf{q} = -k\nabla T = -k\begin{Bmatrix}\frac{\partial T}{\partial x}\\\frac{\partial T}{\partial y}\\\frac{\partial T}{\partial z}\end{Bmatrix}$$
+$$\mathbf{q} = -k\nabla T = -k
+\begin{Bmatrix}
+\frac{\partial T}{\partial x}\\
+\frac{\partial T}{\partial y}\\
+\frac{\partial T}{\partial z}
+\end{Bmatrix}$$
 
 Vodilno enačbo lahko zapišemo kot:
 
