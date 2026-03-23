@@ -298,7 +298,8 @@ Fizikalne lastnosti problema nam poleg diferencialne enačbe, robnih pogojev in 
 
 Ko rešujemo reduciran problem - npr. upogib 3D konstrukcije v 1D moramo definirati dodatne materialne lastnosti, ki nam omogočajo, da upoštevamo lastnosti 3D geometrije v 1D.
 ## 32. Določitev geometrijskih lastnosti ploskovnih KE.
-Ploskovnim elementom moramo določiti še debelino KE in pa normalo na površino KE.
+
+Ploskovnim elementom moramo določiti še debelino KE in normalo na površino KE.
 
 ## 33. Določitev geometrijskih lastnosti linijskih KE.
 
@@ -354,7 +355,7 @@ $$\nabla v = \begin{Bmatrix}
 \frac{\partial v}{\partial z}
 \end{Bmatrix}$$
 
-*S tem je skalarni produkt $\mathbf{q}^T(\nabla v)$ dimenzijsko skladen — gre za produkt dveh vektorjev*.*
+*S tem je skalarni produkt $\mathbf{q}^T(\nabla v)$ dimenzijsko skladen — gre za produkt dveh vektorjev*.
 
 ---
 $$\nabla^T\cdot(\mathbf{q}\, v) = (\nabla^T\cdot \mathbf{q})\,v + \mathbf{q}^T(\nabla v)$$
