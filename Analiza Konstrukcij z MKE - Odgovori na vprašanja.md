@@ -382,6 +382,8 @@ $$k\int_\Omega \left(\frac{\partial T}{\partial x}\frac{\partial v}{\partial x} 
 Po območju KE se temperaturno polje interpolira preko oblikovnih funkcij:
 
 $$T(x,y,z) \approx\hat T(x,y,z) = \sum_{j=1}^{N_v}T_j\psi_j(x,y,z)$$
+
+
 Vsota gre od 1 do števila vozlišč v končnem elementu (v primeru heksaedričnega KE je to vsaj 8 - KE ima vsaj 8 vozlišč).
 
 ## 36. Interpolacija geometrije v primeru izoparametričnega KE. 
