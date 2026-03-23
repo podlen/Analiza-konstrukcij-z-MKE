@@ -328,7 +328,11 @@ Vodilno enačbo lahko zapišemo kot:
 
 $$-\nabla^T\cdot \mathbf{q} + q_v = 0$$
 
-$$\begin{Bmatrix}\frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z}\end{Bmatrix}(-k)\begin{Bmatrix}\frac{\partial T}{\partial x}\\\frac{\partial T}{\partial y}\\\frac{\partial T}{\partial z}\end{Bmatrix}+q_v = 0$$
+$$\begin{Bmatrix}\frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z}\end{Bmatrix}(-k)\begin{Bmatrix}
+\frac{\partial T}{\partial x}\\
+\frac{\partial T}{\partial y}\\
+\frac{\partial T}{\partial z}
+\end{Bmatrix}+q_v = 0$$
 
 Enačbo integriramo in pomnožimo z $v(x)$:
 
@@ -344,7 +348,11 @@ $$\nabla^T\cdot(\mathbf{q}\, v) = (\nabla^T\cdot \mathbf{q})\,v + \mathbf{q}^T(\
 *Drugi člen vsebuje $\nabla v$ in ne $\nabla \cdot v$, ker je $v$ skalarna funkcija — divergenca 
 skalarја nima smisla. Operator $\nabla v$ predstavlja **gradient** skalarja $v$, ki vrne vektor parcialnih odvodov:*
 
-$$\nabla v = \begin{Bmatrix}\frac{\partial v}{\partial x}\\\frac{\partial v}{\partial y}\\\frac{\partial v}{\partial z}\end{Bmatrix}$$
+$$\nabla v = \begin{Bmatrix}
+\frac{\partial v}{\partial x}\\
+\frac{\partial v}{\partial y}\\
+\frac{\partial v}{\partial z}
+\end{Bmatrix}$$
 
 *S tem je skalarni produkt $\mathbf{q}^T(\nabla v)$ dimenzijsko skladen — gre za produkt dveh vektorjev*.*
 
@@ -378,9 +386,9 @@ Vsota gre od 1 do števila vozlišč v končnem elementu (v primeru heksaedričn
 
 Izoparametrični KE nam omogočajo, da popišemo bolj kompleksno geometrijo - izoparametrični elementi so lahko "nepravilne" oblike in lahko bolje popisujejo geometrijo.
 
-Nepravilno obliko dobimo tako, da KE iz naravnega KS preslikamo v kartezični KS. To naredimo preko naslednjih funkcij:$$x=x(\tilde x, \tilde y, \tilde z) = \sum_{j=1}^{N_v}x_j\tilde \psi_j(\tilde x,\tilde y, \tilde z)$$
-$$y = y(\tilde x,\tilde y, \tilde z) = \sum_{j=1}^{N_v}y_j\tilde\psi_j(\tilde x,\tilde y, \tilde z)$$
-$$z = z(\tilde x,\tilde y, \tilde z) = \sum_{j=1}^{N_v}z_j\tilde\psi_j(\tilde x,\tilde y, \tilde z)$$
+Nepravilno obliko dobimo tako, da KE iz naravnega KS preslikamo v kartezični KS. To naredimo preko naslednjih funkcij:$$x = x(\tilde x, \tilde y, \tilde z) = \sum_{j=1}^{N_v}x_j \tilde \psi_j( \tilde x, \tilde y, \tilde z)$$
+$$y = y(\tilde x, \tilde y, \tilde z) = \sum_{j=1}^{N_v}y_j \tilde \psi_j (\tilde x, \tilde y, \tilde z)$$
+$$z = z (\tilde x,\tilde y, \tilde z) = \sum_{j=1}^{N_v} z_j \tilde \psi_j ( \tilde x, \tilde y, \tilde z)$$
 
 ## 37. Razlika med Kartezijskim in naravnim koordinatnim sistemom.
 
