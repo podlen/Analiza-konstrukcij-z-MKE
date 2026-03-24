@@ -438,6 +438,7 @@ $$\psi(x,y,z) = C_1 + C_2 x + C_3 y + C_4 z + C_5 xy + C_6 xz + C_7 yz + C_8 xyz
 $$\psi(x,y,z) = C_1 + C_2 x + C_3 y + C_4 z + C_5 x^2 + C_6 y^2 + C_7 z^2 + C_8 xy + C_9 xz + C_{10} yz$$
 
 **20-vozliščni heksaedrični KE** ($N_v = 20$):
+
 $$\begin{align}
 \psi(x,y,z) &= C_1 + C_2 x + C_3 y + C_4 z \\
 &+ C_5 x^2 + C_6 y^2 + C_7 z^2 \\
@@ -451,15 +452,20 @@ $$\begin{align}
 ## 41. Matrični zapis sistema enačb za posamezni KE (ustaljeni prevod toplote)
 
 Sistem enačb za posamezni KE:
+
 $$k[M]\{T\} = \{q\} + \{Q\}$$
 
 - $k$: toplotna prevodnost materiala
 - $[M]$: matrika toplotne prevodnosti — **simetrična**, elementi so:
+
 $$M_{Ij} = \int_\Omega \left\{ \frac{\partial\psi_I}{\partial x}\frac{\partial\psi_j}{\partial x} + \frac{\partial\psi_I}{\partial y}\frac{\partial\psi_j}{\partial y} + \frac{\partial\psi_I}{\partial z}\frac{\partial\psi_j}{\partial z} \right\} d\Omega = M_{jI}$$
+
 - $\{T\}$: vektor neznanih temperatur v vozliščih (primarna neznanka)
 - $\{q\}$: vektor toplotnih tokov skozi površino KE:
+
 $$q_I = -\int_\Gamma [q_x n_x + q_y n_y + q_z n_z]\, \psi_I\, d\Gamma$$
 - $\{Q\}$: vektor ekvivalentnih vozliščnih vrednosti izvora/ponora toplote:
+
 $$Q_I = \int_\Omega Q_V\, \psi_I\, d\Omega$$
 
 ## 42. Kako pri integriranju po volumnu KE preidemo iz Kartezijevega koordinatnega sistema v naravni koordinatni sistem?
@@ -470,6 +476,8 @@ $$\vec{a} = \frac{\partial\vec{r}}{\partial\tilde{x}}d\tilde{x}, \quad \vec{b} =
 
 
 Diferencial volumna postane mešani produkt:
+
+
 $$d\Omega = \vec{a}(\vec{b}\times\vec{c}) = \begin{vmatrix} \frac{\partial x}{\partial\tilde{x}} & \frac{\partial y}{\partial\tilde{x}} & \frac{\partial z}{\partial\tilde{x}} \\ \frac{\partial x}{\partial\tilde{y}} & \frac{\partial y}{\partial\tilde{y}} & \frac{\partial z}{\partial\tilde{y}} \\ \frac{\partial x}{\partial\tilde{z}} & \frac{\partial y}{\partial\tilde{z}} & \frac{\partial z}{\partial\tilde{z}} \end{vmatrix} d\tilde{x}\,d\tilde{y}\,d\tilde{z} = |J|\,d\tilde{x}\,d\tilde{y}\,d\tilde{z} = |J|\,d\tilde\Omega$$
 
 Jakobijeva matrika je odvisna le od koordinat vozlišč v kartezijskem KS. Za heksaedrični element so meje integracije od $-1$ do $+1$ v vsaki smeri.
@@ -478,6 +486,8 @@ Jakobijeva matrika je odvisna le od koordinat vozlišč v kartezijskem KS. Za he
 ## 43. Prehod iz Kartezijevega v naravni KS pri integriranju po površini
 
 Diferencial površine je dolžina vektorskega produkta vekotrjev ploskve:
+
+
 $$d\Gamma = |\vec{a}\times\vec{b}| = \begin{vmatrix} \vec{e}_x & \vec{e}_y & \vec{e}_z \\ \frac{\partial x}{\partial\tilde{x}} & \frac{\partial y}{\partial\tilde{x}} & \frac{\partial z}{\partial\tilde{x}} \\ \frac{\partial x}{\partial\tilde{y}} & \frac{\partial y}{\partial\tilde{y}} & \frac{\partial z}{\partial\tilde{y}} \end{vmatrix} d\tilde{x}\,d\tilde{y} = |j|\,d\tilde{x}\,d\tilde{y} = |j|\,d\tilde\Gamma$$
 
 Meje integracije v naravnem KS so od $-1$ do $+1$.
@@ -485,9 +495,13 @@ Meje integracije v naravnem KS so od $-1$ do $+1$.
 ## 44. Gaussovo numerično integriranje po eni spremenljivki
 
 Gaussova integracijska formula pretvori integral s poljubnimi mejami na integral od $-1$ do $+1$, ki ga aproksimiramo z uteženo vsoto funkcijskih vrednosti v izbranih točkah:
+
+
 $$I = \int_{x_{sp}}^{x_{zg}} f(x)\,dx = \int_{-1}^{+1}\tilde{f}(\tilde{x})\,d\tilde{x} \approx \sum_{i=1}^m w_i\,\tilde{f}(\tilde{x}_i)$$
 
 Uteži $w_i$ in položaje točk $\tilde{x}_i$ določimo z analitičnim integralom splošnega polinoma stopnje $n$. Ker lihe potence $\tilde{x}$ pri integraciji od $-1$ do $+1$ prispevajo nič, integral vsebuje le sode člene:
+
+
 $$I = 2a_0 + \frac{2}{3}a_2 + \frac{2}{5}a_4 + \cdots + \frac{2}{2k+1}a_{2k}$$
 
 Z izenačenjem aproksimacije z analitičnim rezultatom dobimo sistem enačb, ki določi optimalne pare $(w_i, \tilde{x}_i)$. Ti so vnaprej tabelirani in zagotavljajo točen rezultat za polinome stopnje do $2m-1$, kjer je $m$ število integracijskih točk.
@@ -495,9 +509,11 @@ Z izenačenjem aproksimacije z analitičnim rezultatom dobimo sistem enačb, ki 
 ## 45. Numerično integriranje po več spremenljivkah z Gaussovo formulo
 
 Gaussovo formulo razširimo z večkratnimi vsotami. Za **2D** območje:
+
 $$I = \int_{-1}^{+1}\int_{-1}^{+1}\tilde{f}(\tilde{x},\tilde{y})\,d\tilde{x}\,d\tilde{y} \approx \sum_{j=1}^m\sum_{i=1}^m w_j\,w_i\,\tilde{f}(\tilde{x}_i,\tilde{y}_j)$$
 
 Za **3D** območje:
+
 $$I = \int_{-1}^{+1}\int_{-1}^{+1}\int_{-1}^{+1}\tilde{f}(\tilde{x},\tilde{y},\tilde{z})\,d\tilde{x}\,d\tilde{y}\,d\tilde{z} \approx \sum_{k=1}^m\sum_{j=1}^m\sum_{i=1}^m w_k\,w_j\,w_i\,\tilde{f}(\tilde{x}_i,\tilde{y}_j,\tilde{z}_k)$$
 
 
@@ -506,9 +522,11 @@ $$I = \int_{-1}^{+1}\int_{-1}^{+1}\int_{-1}^{+1}\tilde{f}(\tilde{x},\tilde{y},\t
 Gaussovo formulo prilagodimo za trikotno/tetraedrično obliko s pomočjo **površinskih** oz. **volumskih koordinat** ($\Lambda$).
 
 **Trikotno območje** ($\Gamma \equiv A_{IJK}$):
+
 $$I = \int_\Gamma f(x,y)\,d\Gamma \approx A_{IJK}\sum_{i=1}^m w_i\,\tilde{f}(\Lambda_{Ii}, \Lambda_{Ji}, \Lambda_{Ki})$$
 
 **Tetraedrično območje** ($\Omega \equiv V_{1234}$):
+
 $$I = \int_\Omega f(x,y,z)\,d\Omega \approx V_{1234}\sum_{i=1}^m w_i\,\tilde{f}(\Lambda_{1i},\Lambda_{2i},\Lambda_{3i},\Lambda_{4i})$$
 
 Uteži in koordinate integracijskih točk so vnaprej tabelirane za različno število točk $m$.
@@ -516,13 +534,16 @@ Uteži in koordinate integracijskih točk so vnaprej tabelirane za različno št
 
 ## 47. Izračun integrala po volumnu z volumskimi koordinatami
 
-Kadar pod integralom nastopajo volumske koordinate, lahko integral izračunamo **analitično**:
+Kadar pod integralom nastopajo volumske koordinate, lahko integral izračunamo **analitično**: 
+
+
 $$\int_\Omega (\Lambda_1)^r(\Lambda_2)^p(\Lambda_3)^s(\Lambda_4)^t\,d\Omega = (6\Omega)\frac{r!\,p!\,s!\,t!}{(r+p+s+t+3)!}, \quad 0! = 1$$
 
 Za integral po trikotni površini:
 $$\int_\Gamma (\Lambda_I)^r(\Lambda_K)^p(\Lambda_L)^s\,d\Gamma = (2\Gamma)\frac{r!\,p!\,s!}{(r+p+s+2)!}$$
 
 Volumen tetraedra izračunamo iz determinante:
+
 $$\Omega = V_{1234} = \frac{1}{6}\begin{vmatrix} 1 & x_1 & y_1 & z_1 \\ 1 & x_2 & y_2 & z_2 \\ 1 & x_3 & y_3 & z_3 \\ 1 & x_4 & y_4 & z_4 \end{vmatrix}$$
 
 
@@ -532,6 +553,8 @@ $$\Omega = V_{1234} = \frac{1}{6}\begin{vmatrix} 1 & x_1 & y_1 & z_1 \\ 1 & x_2 
 2. Po **Galerkinovi metodi** izberemo testne funkcije $v = \psi_I(x,y,z)$.
 3. Primarno spremenljivko po elementu aproksimiramo z interpolacijskimi funkcijami: $T \approx \hat{T} = \sum_{j=1}^{N_v} T_j\,\psi_j(x,y,z)$
 4. Aproksimacijo vstavimo v integralsko enačbo in izpeljemo:
+
+
 $$k[M]\{T\} = \{q\} + \{Q\}, \quad I = 1,\ldots,N_v$$
 5. Integrale po volumnu in površini izračunamo numerično (Gaussova formula) ali analitično (volumske koordinate).
 
@@ -541,7 +564,9 @@ $$k[M]\{T\} = \{q\} + \{Q\}, \quad I = 1,\ldots,N_v$$
 1. Za vsak posamezni KE sestavimo lokalni sistem enačb ($N_v \times N_v$ matrika).
 2. Vsako lokalno matriko **razširimo** na dimenzijo globalnega sistema (vrstice/stolpci vozlišč, ki ne pripadajo elementu, dobijo vrednost 0).
 3. Vse razširjene matrike in vektorje **seštejemo** (superpozicija):
+
 $$k[M_k]\{T\} = \{q_q\} + \{q_Q\}$$
    kjer so skupni elementi matrike vsota prispevkov vseh elementov, ki si delijo isto vozlišče:
+   
 $$M_{ij}^{(skupni)} = M_{ij}^{(1)} + M_{ij}^{(2)} + \cdots$$
 4. Upoštevamo robne pogoje (predpisane temperature ali tokovi) in rešimo globalni sistem enačb za neznane temperature $\{T\}$.
