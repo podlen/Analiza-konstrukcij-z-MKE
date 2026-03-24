@@ -479,8 +479,7 @@ Diferencial volumna postane mešani produkt:
 
 
 $$d\Omega = \vec{a}(\vec{b}\times\vec{c}) = \begin{vmatrix} \frac{\partial x}{\partial\tilde{x}} & \frac{\partial y}{\partial\tilde{x}} & \frac{\partial z}{\partial\tilde{x}}\\
-\frac{\partial x}{\partial\tilde{y}} & \frac{\partial y}{\partial\tilde{y}} & \frac{\partial z}{\partial\tilde{y}}\\ \frac{\partial x}{\partial\tilde{z}} & \frac{\partial y}{\partial\tilde{z}} & \frac{\partial z}{\partial\tilde{z}} \end{vmatrix} d\tilde{x}\,d\tilde{y}\,d\tilde{z} 
-
+\frac{\partial x}{\partial\tilde{y}} & \frac{\partial y}{\partial\tilde{y}} & \frac{\partial z}{\partial\tilde{y}}\\ \frac{\partial x}{\partial\tilde{z}} & \frac{\partial y}{\partial\tilde{z}} & \frac{\partial z}{\partial\tilde{z}} \end{vmatrix} d\tilde{x}\,d\tilde{y}\,d\tilde{z}
 r= |J|\,d\tilde{x}\,d\tilde{y}\,d\tilde{z} = |J|\,d\tilde\Omega$$
 
 Jakobijeva matrika je odvisna le od koordinat vozlišč v kartezijskem KS. Za heksaedrični element so meje integracije od $-1$ do $+1$ v vsaki smeri.
