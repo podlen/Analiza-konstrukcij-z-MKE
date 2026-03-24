@@ -458,7 +458,7 @@ $$k[M]\{T\} = \{q\} + \{Q\}$$
 - $k$: toplotna prevodnost materiala
 - $[M]$: matrika toplotne prevodnosti — **simetrična**, elementi so:
 
-$$M_{Ij} = \int_\Omega \biggr \{ \frac{\partial\psi_I}{\partial x}\frac{\partial\psi_j}{\partial x} + \frac{\partial\psi_I}{\partial y}\frac{\partial\psi_j}{\partial y} + \frac{\partial\psi_I}{\partial z}\frac{\partial\psi_j}{\partial z} \biggr \} d\Omega = M_{jI}$$
+$$M_{Ij} = \int_\Omega \biggr ( \frac{\partial\psi_I}{\partial x}\frac{\partial\psi_j}{\partial x} + \frac{\partial\psi_I}{\partial y}\frac{\partial\psi_j}{\partial y} + \frac{\partial\psi_I}{\partial z}\frac{\partial\psi_j}{\partial z} \biggr ) d\Omega = M_{jI}$$
 
 - $\{T\}$: vektor neznanih temperatur v vozliščih (primarna neznanka)
 - $\{q\}$: vektor toplotnih tokov skozi površino KE:
