@@ -478,22 +478,17 @@ $$\vec{a} = \frac{\partial\vec{r}}{\partial\tilde{x}}d\tilde{x}, \quad \vec{b} =
 Diferencial volumna postane mešani produkt:
 
 
-$$d\Omega = \vec{a}(\vec{b}\times\vec{c}) = 
+$$d\Omega = \vec{a}(\vec{b}\times\vec{c}) = \begin{vmatrix} \frac{\partial x}{\partial\tilde{x}} & \frac{\partial y}{\partial\tilde{x}} & \frac{\partial z}{\partial\tilde{x}}\\
+\frac{\partial x}{\partial\tilde{y}} & \frac{\partial y}{\partial\tilde{y}} & \frac{\partial z}{\partial\tilde{y}}\\ \frac{\partial x}{\partial\tilde{z}} & \frac{\partial y}{\partial\tilde{z}} & \frac{\partial z}{\partial\tilde{z}} \end{vmatrix} d\tilde{x}\,d\tilde{y}\,d\tilde{z} 
 
-\begin{vmatrix} \frac{\partial x}{\partial\tilde{x}} & \frac{\partial y}{\partial\tilde{x}} & \frac{\partial z}{\partial\tilde{x}} \\
-
-\frac{\partial x}{\partial\tilde{y}} & \frac{\partial y}{\partial\tilde{y}} & \frac{\partial z}{\partial\tilde{y}} 
-
-\\ \frac{\partial x}{\partial\tilde{z}} & \frac{\partial y}{\partial\tilde{z}} & \frac{\partial z}{\partial\tilde{z}} \end{vmatrix} d\tilde{x}\,d\tilde{y}\,d\tilde{z} 
-
-= |J|\,d\tilde{x}\,d\tilde{y}\,d\tilde{z} = |J|\,d\tilde\Omega$$
+r= |J|\,d\tilde{x}\,d\tilde{y}\,d\tilde{z} = |J|\,d\tilde\Omega$$
 
 Jakobijeva matrika je odvisna le od koordinat vozlišč v kartezijskem KS. Za heksaedrični element so meje integracije od $-1$ do $+1$ v vsaki smeri.
 
 
 ## 43. Prehod iz Kartezijevega v naravni KS pri integriranju po površini
 
-Diferencial površine je dolžina vektorskega produkta vekotrjev ploskve:
+Diferencial površine je dolžina vektorskega produkta vektorjev ploskve:
 
 
 $$d\Gamma = |\vec{a}\times\vec{b}| = \begin{vmatrix} \vec{e}_x & \vec{e}_y & \vec{e}_z \\ \frac{\partial x}{\partial\tilde{x}} & \frac{\partial y}{\partial\tilde{x}} & \frac{\partial z}{\partial\tilde{x}} \\ \frac{\partial x}{\partial\tilde{y}} & \frac{\partial y}{\partial\tilde{y}} & \frac{\partial z}{\partial\tilde{y}} \end{vmatrix} d\tilde{x}\,d\tilde{y} = |j|\,d\tilde{x}\,d\tilde{y} = |j|\,d\tilde\Gamma$$
