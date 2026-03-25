@@ -515,7 +515,13 @@ Jakobijeva matrika je odvisna le od koordinat vozlišč v kartezijskem KS. Za he
 Diferencial površine je dolžina vektorskega produkta vektorjev ploskve:
 
 $$
-d\Gamma = |\vec{a}\times\vec{b}| = \begin{vmatrix} \vec{e}_x & \vec{e}_y & \vec{e}_z \\ \frac{\partial x}{\partial\tilde{x}} & \frac{\partial y}{\partial\tilde{x}} & \frac{\partial z}{\partial\tilde{x}} \\ \frac{\partial x}{\partial\tilde{y}} & \frac{\partial y}{\partial\tilde{y}} & \frac{\partial z}{\partial\tilde{y}} \end{vmatrix} d\tilde{x}\,d\tilde{y} = |j|\,d\tilde{x}\,d\tilde{y} = |j|\,d\tilde\Gamma
+d\Gamma = |\vec{a}\times\vec{b}| = 
+\begin{vmatrix} 
+\vec{e}_x & \vec{e}_y & \vec{e}_z \\ 
+\frac{\partial x}{\partial\tilde{x}} & \frac{\partial y}{\partial\tilde{x}} & \frac{\partial z}{\partial\tilde{x}} \\ 
+\frac{\partial x}{\partial\tilde{y}} & \frac{\partial y}{\partial\tilde{y}} & \frac{\partial z}{\partial\tilde{y}} 
+\end{vmatrix} 
+d\tilde{x}\,d\tilde{y} = |j|\,d\tilde{x}\,d\tilde{y} = |j|\,d\tilde\Gamma
 $$
 
 Meje integracije v naravnem KS so od $-1$ do $+1$.
@@ -585,36 +591,42 @@ $$
 Volumen tetraedra izračunamo iz determinante:
 
 $$
-\Omega = V_{1234} = \frac{1}{6}\begin{vmatrix} 1 & x_1 & y_1 & z_1 \\ 1 & x_2 & y_2 & z_2 \\ 1 & x_3 & y_3 & z_3 \\ 1 & x_4 & y_4 & z_4 \end{vmatrix}
+\Omega = V_{1234} = \frac{1}{6}
+\begin{vmatrix} 
+1 & x_1 & y_1 & z_1 \\ 
+1 & x_2 & y_2 & z_2 \\ 
+1 & x_3 & y_3 & z_3 \\ 
+1 & x_4 & y_4 & z_4 
+\end{vmatrix}
 $$
 
 ## 48. Kako pridemo do sistema linearnih enačb za posamezni KE?
 
-1. Zapišemo šibko (integralsko) formulacijo fizikalnega problema.
-2. Po **Galerkinovi metodi** izberemo testne funkcije $v = \psi_I(x,y,z)$.
-3. Primarno spremenljivko po elementu aproksimiramo z interpolacijskimi funkcijami: $T \approx \hat{T} = \sum_{j=1}^{N_v} T_j\,\psi_j(x,y,z)$
-4. Aproksimacijo vstavimo v integralsko enačbo in izpeljemo:
+**1.** Zapišemo šibko (integralsko) formulacijo fizikalnega problema.
+**2.** Po **Galerkinovi metodi** izberemo testne funkcije $v = \psi_I(x,y,z)$.
+**3.** Primarno spremenljivko po elementu aproksimiramo z interpolacijskimi funkcijami: $T \approx \hat{T} = \sum_{j=1}^{N_v} T_j\,\psi_j(x,y,z)$
+**4.** Aproksimacijo vstavimo v integralsko enačbo in izpeljemo:
 
-   $$
-   k[M]\{T\} = \{q\} + \{Q\}, \quad I = 1,\ldots,N_v
-   $$
+$$
+k[M]\{T\} = \{q\} + \{Q\}, \quad I = 1,\ldots,N_v
+$$
 
-5. Integrale po volumnu in površini izračunamo numerično (Gaussova formula) ali analitično (volumske koordinate).
+**5.** Integrale po volumnu in površini izračunamo numerično (Gaussova formula) ali analitično (volumske koordinate).
 
 ## 49. Kako pridemo do sistema linearnih enačb za celotno območje?
 
-1. Za vsak posamezni KE sestavimo lokalni sistem enačb ($N_v \times N_v$ matrika).
-2. Vsako lokalno matriko **razširimo** na dimenzijo globalnega sistema (vrstice/stolpci vozlišč, ki ne pripadajo elementu, dobijo vrednost 0).
-3. Vse razširjene matrike in vektorje **seštejemo** (superpozicija):
+**1.** Za vsak posamezni KE sestavimo lokalni sistem enačb ($N_v \times N_v$ matrika).
+**2.** Vsako lokalno matriko **razširimo** na dimenzijo globalnega sistema (vrstice/stolpci vozlišč, ki ne pripadajo elementu, dobijo vrednost 0).
+**3.** Vse razširjene matrike in vektorje **seštejemo** (superpozicija):
 
-   $$
-   k[M_k]\{T\} = \{q_q\} + \{q_Q\}
-   $$
+$$
+k[M_k]\{T\} = \{q_q\} + \{q_Q\}
+$$
 
-   kjer so skupni elementi matrike vsota prispevkov vseh elementov, ki si delijo isto vozlišče:
+kjer so skupni elementi matrike vsota prispevkov vseh elementov, ki si delijo isto vozlišče:
    
-   $$
-   M_{ij}^{(skupni)} = M_{ij}^{(1)} + M_{ij}^{(2)} + \cdots
-   $$
+$$
+M_{ij}^{(skupni)} = M_{ij}^{(1)} + M_{ij}^{(2)} + \cdots
+$$
 
-4. Upoštevamo robne pogoje (predpisane temperature ali tokovi) in rešimo globalni sistem enačb za neznane temperature $\{T\}$.
+**4.** Upoštevamo robne pogoje (predpisane temperature ali tokovi) in rešimo globalni sistem enačb za neznane temperature $\{T\}$.
