@@ -641,6 +641,8 @@ Ker na skupni površini sosednjih elementov velja zakon o ohranitvi toplotnega t
 ## 51. Kako je v izračunu z MKE upoštevan konvektivni robni pogoj prestopa toplote na površini območja?
 
 $$q = h(T_{stena}  -T_{okoloca})$$
+
+
 Konvektivni robni pogoj se upošteva preko površinskega integrala, ki se razdeli na dva dela:
 1.  Del, ki je odvisen od neznanih temperatur vozlišč $\{T\}$, tvori **matriko prestopnosti** $[M_h]$, ki se prišteje k prevodnostni matriki $[M]$.
 
