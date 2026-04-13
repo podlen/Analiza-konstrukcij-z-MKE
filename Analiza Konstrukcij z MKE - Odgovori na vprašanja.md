@@ -308,7 +308,9 @@ Linijskim elementom moramo definirati karakteristike prereza:
 - težiščni vztrajnostni momenti ploskve - $I_x, I_y$ in $I_{xy}$
 - torzijski vztrajnostni moment - $I_t$
 
-Definirati moramo tudi lego prereza glede na težiščnico.
+Definirati moramo tudi lego prereza glede na težiščnico - od te lege je so odvisni vztrajnostni momenti prereza.
+
+Prav tako moramo definirati lego glavnih vztrajnostnih osi.
 
 ## 34. Izpeljava šibke integralske enačbe za časovno ustaljen prostorski prevod toplote.
 
@@ -473,7 +475,7 @@ $$
 M_{Ij} = \int_\Omega \left( \frac{\partial\psi_I}{\partial x}\frac{\partial\psi_j}{\partial x} + \frac{\partial\psi_I}{\partial y}\frac{\partial\psi_j}{\partial y} + \frac{\partial\psi_I}{\partial z}\frac{\partial\psi_j}{\partial z} \right) d\Omega = M_{jI}
 $$
 
-- $\{T\}$: vektor neznanih temperatur v vozliščih (primarna neznanka)
+- $\{T\}$: vektor temperatur v vozliščih (primarna neznanka)
 - $\{q\}$: vektor toplotnih tokov skozi površino KE:
 
 $$
@@ -488,7 +490,7 @@ $$
 
 ## 42. Kako pri integriranju po volumnu KE preidemo iz Kartezijevega koordinatnega sistema v naravni koordinatni sistem?
 
-Izhajamo iz zapisa položajnega vektorja $\vec{r} = x\vec{e}_x + y\vec{e}_y + z\vec{e}_z$ in definiramo bazne vektorje:
+Izhajamo iz zapisa krajevnega vektorja $\vec{r} = x\vec{e}_x + y\vec{e}_y + z\vec{e}_z$ in definiramo bazne vektorje:
 
 $$
 \vec{a} = \frac{\partial\vec{r}}{\partial\tilde{x}}d\tilde{x}, \quad \vec{b} = \frac{\partial\vec{r}}{\partial\tilde{y}}d\tilde{y}, \quad \vec{c} = \frac{\partial\vec{r}}{\partial\tilde{z}}d\tilde{z}
@@ -540,7 +542,7 @@ $$
 I = 2a_0 + \frac{2}{3}a_2 + \frac{2}{5}a_4 + \cdots + \frac{2}{2k+1}a_{2k}
 $$
 
-Z izenačenjem aproksimacije z analitičnim rezultatom dobimo sistem enačb, ki določi optimalne pare $(w_i, \tilde{x}_i)$. Ti so vnaprej tabelirani in zagotavljajo točen rezultat za polinome stopnje do $2m-1$, kjer je $m$ število integracijskih točk.
+Z izenačenjem aproksimacije z analitičnim rezultatom dobimo sistem (nelinearnih) enačb, ki določi optimalne pare $(w_i, \tilde{x}_i)$. Ti so vnaprej tabelirani in zagotavljajo točen rezultat za polinome stopnje do $2m-1$, kjer je $m$ število integracijskih točk.
 
 ## 45. Numerično integriranje po več spremenljivkah z Gaussovo formulo
 
@@ -630,3 +632,46 @@ M_{ij}^{(skupni)} = M_{ij}^{(1)} + M_{ij}^{(2)} + \cdots
 $$
 
 **4.** Upoštevamo robne pogoje (predpisane temperature ali tokovi) in rešimo globalni sistem enačb za neznane temperature $\{T\}$.
+
+# Predavanje 7 - 31.3.2026
+## 50. Zakaj se ne izračunava integralov po površini, ki je skupna dvema končnima elementoma?
+
+Ker na skupni površini sosednjih elementov velja zakon o ohranitvi toplotnega toka, kar pomeni, da je iztekajoči tok iz prvega elementa enak pritekajočemu toku v drugi element ($q_n^{(1)} = -q_n^{(2)}$). Pri sestavljanju globalnega sistema enačb se prispevki teh integralov v vozliščih med seboj izničijo ($\{q^{(1)}\} + \{q^{(2)}\} = 0$), zato se integrali izračunavajo le po zunanjih (prostih) površinah območja.
+
+## 51. Kako je v izračunu z MKE upoštevan konvektivni robni pogoj prestopa toplote na površini območja?
+
+$$q = h(T_{stena}  -T_{okoloca})$$
+Konvektivni robni pogoj se upošteva preko površinskega integrala, ki se razdeli na dva dela:
+1.  Del, ki je odvisen od neznanih temperatur vozlišč $\{T\}$, tvori **matriko prestopnosti** $[M_h]$, ki se prišteje k prevodnostni matriki $[M]$.
+
+2.  Del, ki je odvisen od znane temperature okolice $T_{zrak}$, tvori **vektor ekvivalentnih vozliščnih toplotnih virov** $\{q_q\}$, ki se prišteje na desno stran sistema enačb.
+
+## 52. Kako je v izračunu z MKE upoštevan robni pogoj prestopa toplote s sevanjem na površini območja?
+
+Sevanje se upošteva podobno kot konvekcija, vendar je zaradi četrte potence temperature v enačbi ($q_s = \sigma \epsilon (T^4 - T_0^4)$) ta robni pogoj **nelinearen**. 
+
+V MKE se to običajno rešuje z uvedbo nadomestne (linearizirane) toplotne prestopnosti za sevanje:
+
+$$T^4 - T_{\infty}^4 = (T^2-T_{\infty}^2)(T^2 + T_{\infty}^2)$$
+
+$$T^2 - T_{\infty}^2 = (T-T_{\infty})(T+T_{\infty})$$
+
+
+
+Vzamemo člen $(T-T_{\infty})$, ostale člene pa združimo v koeficient, ki ga iterativno izračunamo. Formula za toplotni tok zaradi sevanja je torej:
+
+$$q_{s} = \sigma\varepsilon c(T - T_{\infty})$$
+
+kjer je $c = (T+T_{\infty})(T^2 + T_{\infty}^2)$.
+
+## 53. Primerjaj metode za reševanje sistema linearnih enačb.
+
+Metode delimo na direktne in iterativne:
+
+*   **Direktne metode** (Gaussova eliminacija s pivotiranjem, razcep LU ali Choleskega):
+    *   **Prednosti:** So numerično stabilne in dajo natančno rešitev v končnem številu korakov.
+    *   **Slabosti:** Čas reševanja s številom enačb narašča potenčno (eksponentna krivulja na grafu), zahtevajo veliko delovnega pomnilnika.
+*   **Iterativne metode** (Gauss-Seidlova, Gauss-Jacobijeva metoda, metoda konjugiranih gradientov):
+    *   **Prednosti:** Čas reševanja narašča približno linearno s številom enačb. Porabijo manj pomnilnika.
+    *   **Slabosti:** Potrebujejo konvergenčni kriterij in niso vedno stabilne.
+*   **Povzetek:** Za manjše sisteme so boljše direktne metode, pri velikih sistemih (nad $10^6$ enačb) pa so zaradi hitrosti in pomnilniške učinkovitosti bolj smiselne iterativne metode.
