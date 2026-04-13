@@ -650,7 +650,7 @@ Konvektivni robni pogoj se upošteva preko površinskega integrala, ki se razdel
 
 ## 52. Kako je v izračunu z MKE upoštevan robni pogoj prestopa toplote s sevanjem na površini območja?
 
-Sevanje se upošteva podobno kot konvekcija, vendar je zaradi četrte potence temperature v enačbi ($q_s = \sigma \epsilon (T^4 - T_0^4)$) ta robni pogoj **nelinearen**. 
+Sevanje se upošteva podobno kot konvekcija, vendar je zaradi četrte potence temperature v enačbi  $q_s = \sigma \epsilon (T^4 - T_0^4)$  ta robni pogoj **nelinearen**. 
 
 V MKE se to običajno rešuje z uvedbo nadomestne (linearizirane) toplotne prestopnosti za sevanje:
 
