@@ -717,6 +717,8 @@ Vrednost pove, za koliko dolžinskih enot se je vozlišče premaknilo glede na n
 
 
 Predstavlja linearno deformacijo (razteg) materialnega delca vzdolž osi. Pozitiven predznak (+) pomeni **razteg**, negativen (-) pa **skrček**.
+
+
 $$ \varepsilon_{xx} = \frac{\partial u_x}{\partial x} $$
 
 
