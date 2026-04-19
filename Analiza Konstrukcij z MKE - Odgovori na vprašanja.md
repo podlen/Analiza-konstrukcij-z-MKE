@@ -677,3 +677,102 @@ Metode delimo na direktne in iterativne:
     *   **Prednosti:** Čas reševanja narašča približno linearno s številom enačb. Porabijo manj pomnilnika.
     *   **Slabosti:** Potrebujejo konvergenčni kriterij in niso vedno stabilne.
 *   **Povzetek:** Za manjše sisteme so boljše direktne metode, pri velikih sistemih (nad $10^6$ enačb) pa so zaradi hitrosti in pomnilniške učinkovitosti bolj smiselne iterativne metode.
+
+# Predavanje 8 - 13.4.2026
+## 54. Izhodiščna enačba za reševanje statičnega 3D mehanskega problema z MKE.
+
+Fizikalno izhodišče so diferencialne enačbe ravnotežja, ki pa jih za reševanje z MKE preoblikujemo v šibko obliko. Ta uravnoteži notranje napetosti z zunanjimi površinskimi in volumskimi obremenitvami:
+
+$$ \int_\Omega \{\delta v\}^T \{\sigma\} d\Omega = \int_\Gamma \{\delta v\}^T \{p\} d\Gamma + \int_\Omega \{\delta v\}^T \rho \{a\} d\Omega $$
+
+## 55. Kako je izbrana poljubna funkcija $v$ v primeru 3D KE za reševanje mehanskega problema?
+
+V skladu z Galerkinovo metodo so $v$ enake kot oblikovne funkcije $[N]$. V primeru 3D mehanskega problema so pomnožene še s poljubno vozliščno vrednostjo $\Upsilon$. 
+
+$$ \{v\} = [N]\{\Upsilon\} \quad \text{in} \quad \{\delta v\} = [L][N]\{\Upsilon\} $$
+
+
+## 56. Katere so primarne neznanke pri reševanju 3D mehanskih problemov?
+
+
+Primarne neznanke so pomiki v vozliščih (ali pa reakcijske sile). V 3D prostoru ima vsako vozlišče 3 translacijske prostostne stopnje:
+
+
+$$ \{U\} = \{U_x, U_y, U_z\}^T $$
+
+## 57. Kako se izračunajo komponente napetostnega tenzorja?
+
+
+Izračunajo se v **integracijskih točkah** preko reološkega (Hookovega) zakona, ki deformacije pomnoži z materialno matriko $[E]$. Deformacije pa dobimo iz odvodov vozliščnih pomikov:
+
+
+$$ \{\sigma\}_e = [E]\{\varepsilon\}_e = [E] ([L][N]) \{U\}_e $$
+
+## 58. Kaj predstavlja vrednost in predznak komponente vektorja pomika?
+
+
+Vrednost pove, za koliko dolžinskih enot se je vozlišče premaknilo glede na neobremenjeno stanje. Predznak določa smer premika vzdolž osi ($x, y$ ali $z$) globalnega koordinatnega sistema.
+
+## 59. Kaj predstavlja vrednost in predznak normalne komponente deformacijskega tenzorja?
+
+
+Predstavlja linearno deformacijo (razteg) materialnega delca vzdolž osi. Pozitiven predznak (+) pomeni **razteg**, negativen (-) pa **skrček**.
+$$ \varepsilon_{xx} = \frac{\partial u_x}{\partial x} $$
+
+
+## 60. Kaj predstavlja vrednost in predznak normalne komponente napetostnega tenzorja?
+
+
+Predstavlja velikost normalne obremenitve na prerez. Pozitiven predznak (+) pomeni natezno napetost, negativen (-) pa tlačno napetost.
+
+## 61. Kako je definirana strižna komponenta deformacijskega tenzorja?
+
+
+Strižne deformacije predstavljajo spremembo pravega kota v materialnem delcu. Zapisane so s pomočjo parcialnih odvodov pomikov pravokotno na koordinatne osi:
+
+$$ \varepsilon_{xy} = \frac{1}{2} \left( \frac{\partial u_x}{\partial y} + \frac{\partial u_y}{\partial x} \right) $$
+
+## 62. Kako preverimo ali je obremenitev mehansko obremenjene komponente v dopustnih vrednostih?
+
+Kompleksno 3D napetostno stanje pretvorimo v eno **primerjalno napetost**, ki jo primerjamo z dopustno mejo materiala. Najpogosteje uporabimo Von Misesovo primerjalno napetost, ki je vedno pozitivna:
+
+
+$$ \sigma_{ekv}^{\text{Mises}} = \sqrt{0.5 \left[ (\sigma_1-\sigma_2)^2 + (\sigma_1-\sigma_3)^2 + (\sigma_2-\sigma_3)^2 \right]} $$
+
+## 64. Kako so definirane komponente deformacijskega tenzorja v cilindričnem koordinatnem sistemu?
+
+
+Normalne komponente opisujejo razteg v smereh $r, z, \varphi$:
+
+
+$$ \varepsilon_{rr} = \frac{\partial u_r}{\partial r}, \quad \varepsilon_{zz} = \frac{\partial u_z}{\partial z}, \quad \varepsilon_{\varphi\varphi} = \frac{u_r}{r} + \frac{1}{r}\frac{\partial u_\varphi}{\partial \varphi} $$
+
+
+Strižne komponente vsebujejo dodatne člene ($1/r$) zaradi ukrivljenosti sistema:
+
+
+$$ \varepsilon_{r\varphi} = \frac{1}{2} \left( \frac{1}{r} \frac{\partial u_r}{\partial \varphi} + \frac{\partial u_\varphi}{\partial r} - \frac{u_\varphi}{r} \right) $$
+
+## 65. Katere mehanske veličine se v primeru uporabe 3D KE izračunavajo v vozliščih in katere v integracijskih točkah posameznega KE?
+
+
+*   **Vozlišča:** primarne neznanke – pomiki ($\{U\}$) in ekvivalentne sile ($\{F\}$).
+
+*   **Integracijske točke:** sekundarne neznanke – deformacije ($\{\varepsilon\}$) in napetosti ($\{\sigma\}$).
+
+## 66. Vloga globalnega koordinatnega sistema.
+Omogoča rotacijo vseh poljubno zasukanih elementov v skupen referenčni sistem in sestavljanje sistema enačb celotnega problema:
+
+
+$$ [K]\{U\} = \{F\} $$
+
+
+V njem se definirajo tudi vsi robni pogoji in obremenitve.
+
+## 67. Kako je zajet vpliv lastne teže v primeru uporabe 3D KE?
+
+
+Zajet je kot volumska obremenitev. Teža (gostota $\rho$ $\times$ pospešek $a$) se integrira preko volumna elementa in s pomočjo interpolacijskih funkcij $[N]$ pretvori v ekvivalentne vozliščne sile:
+
+
+$$ \{F_v\}_e = \int_{\Omega_e} \rho \cdot a_k [N]^T d\Omega $$
