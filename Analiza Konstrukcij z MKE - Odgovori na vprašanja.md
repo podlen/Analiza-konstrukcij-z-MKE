@@ -699,7 +699,7 @@ Zakaj bi to želeli? Ko imamo funkcije $v$ popisane na tak način lahko zapišem
 
 $$\{\partial v\} = [L][N]\{\Upsilon\}$$
 
-Tukaj je $[L]$ .termatrika operatorjev parcialnih odvodov. 
+Tukaj je $[L]$ matrika operatorjev parcialnih odvodov. 
 
 To lahko vstavimo v šibko obliko integralske formulacije:
 
