@@ -804,4 +804,4 @@ V njem se definirajo tudi vsi robni pogoji in obremenitve.
 Zajet je kot volumska obremenitev. Teža (gostota $\rho$ $\times$ pospešek $a$) se integrira preko volumna elementa in s pomočjo interpolacijskih funkcij $[N]$ pretvori v ekvivalentne vozliščne sile:
 
 
-$$ \{F_v\}_e = \int_{\Omega_e} \rho \cdot a_k [N]^T d\Omega $$
+$$ \{F_v\}_e = \int_{\Omega_e} \rho \cdot a_k [N]d\Omega $$
