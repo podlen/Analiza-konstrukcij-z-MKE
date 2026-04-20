@@ -673,7 +673,7 @@ Metode delimo na direktne in iterativne:
 *   **Direktne metode** (Gaussova eliminacija s pivotiranjem, razcep LU ali Choleskega):
     *   **Prednosti:** So numerično stabilne in dajo natančno rešitev v končnem številu korakov.
     *   **Slabosti:** Čas reševanja s številom enačb narašča potenčno (eksponentna krivulja na grafu), zahtevajo veliko delovnega pomnilnika.
-*   **Iterativne metode** (Gauss-Seidlova, Gauss-Jacobijeva metoda, metoda konjugiranih gradientov):
+*  .ter **Iterativne metode** (Gauss-Seidlova, Gauss-Jacobijeva metoda, metoda konjugiranih gradientov):
     *   **Prednosti:** Čas reševanja narašča približno linearno s številom enačb. Porabijo manj pomnilnika.
     *   **Slabosti:** Potrebujejo konvergenčni kriterij in niso vedno stabilne.
 *   **Povzetek:** Za manjše sisteme so boljše direktne metode, pri velikih sistemih (nad $10^6$ enačb) pa so zaradi hitrosti in pomnilniške učinkovitosti bolj smiselne iterativne metode.
@@ -683,15 +683,42 @@ Metode delimo na direktne in iterativne:
 
 Fizikalno izhodišče so diferencialne enačbe ravnotežja, ki pa jih za reševanje z MKE preoblikujemo v šibko obliko. Ta uravnoteži notranje napetosti z zunanjimi površinskimi in volumskimi obremenitvami:
 
-$$ \int_\Omega \{\delta v\}^T \{\sigma\} d\Omega = \int_\Gamma \{\delta v\}^T \{p\} d\Gamma + \int_\Omega \{\delta v\}^T \rho \{a\} d\Omega $$
+$$ \int_\Omega \{\partial v\}^T \{\sigma\} d\Omega = \int_\Gamma \{\partial v\}^T \{p\} d\Gamma + \int_\Omega \{\partial v\}^T \rho \{a\} d\Omega $$
 
 ## 55. Kako je izbrana poljubna funkcija $v$ v primeru 3D KE za reševanje mehanskega problema?
 
 V skladu z Galerkinovo metodo so $v$ enake kot oblikovne funkcije $[N]$. V primeru 3D mehanskega problema so pomnožene še s poljubno vozliščno vrednostjo $\Upsilon$. 
 
-$$ \{v\} = [N]\{\Upsilon\} \quad \text{in} \quad \{\delta v\} = [L][N]\{\Upsilon\} $$
+$$ \{v\} = [N]\{\Upsilon\} \quad \text{in} \quad \{\partial v\} = [L][N]\{\Upsilon\} $$
+
+Vektor poljubnih vrednosti $\Upsilon$ rabimo zato, da lahko poljubne funkcije $\{v\}$ zapišemo kot produkt matrike in vektorja:
+
+$$\{v\} = [N]\{ \Upsilon \}$$
+
+Zakaj bi to želeli? Ko imamo funkcije $v$ popisane na tak način lahko zapišemo tudi vektor odvodov oblikovnih funkcij:
+
+$$\{\partial v\} = [L][N]\{\Upsilon\}$$
+
+Tukaj je $[L]$ .termatrika operatorjev parcialnih odvodov. 
+
+To lahko vstavimo v šibko obliko integralske formulacije:
+
+$$\int_{\Omega}\biggr([L][N]\{U\}\biggr)^T[E]\{\partial v\}d\Omega =\int_{\Gamma}\{p\}\{v\}d\Gamma + \int_{\Omega}\rho\{a\}\{v\}d\Omega$$
 
 
+$$\int_{\Omega}\biggr([L][N]\{U\}\biggr)^T[E] \biggr([L][N]\{\Upsilon\}\biggr)d\Omega =\int_{\Gamma}\{p\}[N]\{\Upsilon\} d\Gamma + \int_{\Omega}\rho\{a\}[N]\{\Upsilon\}d\Omega$$
+
+
+Poljubne vozliščne vrednosti lahko izpostavimo in okrajšamo:
+
+
+$$\int_{\Omega}\biggr([L][N]\{U\}\biggr)^T[E] \biggr([L][N]\biggr)d\Omega =\int_{\Gamma}\{p\}[N] d\Gamma + \int_{\Omega}\rho\{a\}[N]d\Omega$$
+
+
+Na levi strani lahko izpostavimo pomike $\{U\}$ in dobimo znano enačbo za togostno matriko:
+
+
+$$K_e = [B]^T[E][B] = \biggr([L][N]\biggr)^T[E]\biggr([L][N]\biggr)$$
 ## 56. Katere so primarne neznanke pri reševanju 3D mehanskih problemov?
 
 
