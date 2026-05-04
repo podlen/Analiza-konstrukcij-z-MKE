@@ -805,3 +805,57 @@ Zajet je kot volumska obremenitev. Teža (gostota $\rho$ $\times$ pospešek $a$)
 
 
 $$ \{F_v\}_e = \int_{\Omega_e} \rho \cdot a_k [N]d\Omega $$
+
+# Predavanje 9 - 20.4.2026
+
+## 68. Kaj mora biti izpolnjeno, da lahko uporabimo osnosimetrične KE?
+
+Da lahko problem obravnavamo kot osno-simetrični problem (privzemimo, da je os simetrije "z" koordinatna os), morajo biti osno-simetrični:
+1. geometrija obravnavanega območja,
+2. materialne lastnosti,
+3. predpisani robni pogoji,
+4. obremenitev obravnavanega območja.
+
+## 69. Opišite prednosti uporabe osnosimetričnih KE v primerjavi z uporabo volumskih KE?
+
+Uporabimo lahko bistveno manj končnih elementov in imamo precej manjše število enačb. To omogoča hitrejši izračun ali pa uporabo veliko gostejše mreže za isti računski čas. Prav tako lažje in boljše popišemo geometrijo, saj namesto celotnega 3D volumna modeliramo le 2D presek.
+
+## 70. Katere komponente deformacijskega tenzorja so različne od nič v primeru obravnave problema z osnosimetričnimi KE?
+
+V primerih osnosimetričnih KE ima deformacijski tenzor 4 komponente, ki so različne od 0.
+To so komponente normalne deformacije:
+$$\varepsilon_{rr} \text{ , } \varepsilon_{\varphi \varphi}\text{ , } \varepsilon_{zz}$$
+
+In komponenta strižne deformacije:
+$$\gamma_{rz} \text{  (oz. } \varepsilon_{rz})$$
+
+## 71. Kako je določena obodna deformacija v primeru obravnave problema z osnosimetričnimi KE?
+
+Obodna deformacija $\varepsilon_{\varphi \varphi}$ je določena kot:
+
+$$\varepsilon_{\varphi\varphi} = \frac{u_r}{r}$$
+
+Moramo paziti: tudi če je problem osnosimetričen in so vsi odvodi $\frac{\partial}{\partial \varphi}=0$, je deformacija v obodni smeri še vedno različna od 0, saj je posledica radialnega pomika $u_r$.
+
+## 72. Kaj predstavlja aksialna točkovna obremenitev v primeru obravnave problema z osnosimetričnimi KE?
+
+Aksialna točkovna obremenitev v vozlišču 2D osnosimetričnega KE dejansko predstavlja celotno silo na določenem radiju. V realnosti to ustreza linijski obremenitvi v aksialni smeri, ki je porazdeljena po celotnem obodu krožnice s tem radijem.
+
+## 73. Kaj predstavlja radialna točkovna obremenitev v primeru obravnave problema z osnosimetričnimi KE?
+
+Radialna točkovna obremenitev v vozlišču predstavlja celotno silo na določenem radiju v radialni smeri (ustreza radialni linijski obremenitvi po celotnem obodu).
+
+## 74. Kako obravnavamo volumske obremenitve v primeru obravnave problema z osnosimetričnimi KE?
+
+Volumske obremenitve (npr. lastna teža ali centrifugalna sila) obravnavamo tako, da zanje izračunamo ekvivalentne vozliščne sile za posamezni KE. 
+Izračun teh ekvivalentnih vozliščnih sil je vezan na volumen (vrtenino), ki jo dobimo z vrtenjem površine posameznega KE okoli osi, ki predstavlja osno simetrijo ($d\Omega = 2\pi r\,d\Gamma$).
+
+*(Fizikalno pa velja: volumsko obremenitev, ki deluje samo v eni smeri (npr. gravitacija), lahko obravnavamo le, če deluje v osni (aksialni) smeri, sicer problem ni več osnosimetričen. Druga izjema je centrifugalna sila, ki deluje osnosimetrično v radialni smeri).*
+
+## 75. Kaj mora biti izpolnjeno, da lahko problem obravnavamo kot ravninsko napetostni problem?
+
+Da lahko problem obravnavamo kot ravninsko napetostni problem (v ravnini x-y), mora biti izpolnjeno naslednje:
+1. Komponente napetostnega tenzorja $\sigma_{zz}$, $\sigma_{xz}$ in $\sigma_{yz}$ morajo biti tako majhne, da jih lahko zanemarimo.
+2. Material mora biti homogen, njegove fizikalne lastnosti pa so lahko tudi ortotropne (različne lastnosti v pravokotnih smereh).
+3. Predpisani robni pogoji se morajo nanašati izključno na ravnino obravnavanega problema.
+4. Obremenitev mora ležati v ravnini obravnavanega problema.
