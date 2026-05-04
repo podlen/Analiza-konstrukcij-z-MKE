@@ -850,8 +850,18 @@ Radialna točkovna obremenitev v vozlišču predstavlja celotno silo na določen
 Volumske obremenitve (npr. lastna teža ali centrifugalna sila) obravnavamo tako, da zanje izračunamo ekvivalentne vozliščne sile za posamezni KE. 
 Izračun teh ekvivalentnih vozliščnih sil je vezan na volumen (vrtenino), ki jo dobimo z vrtenjem površine posameznega KE okoli osi, ki predstavlja osno simetrijo ($d\Omega = 2\pi r\,d\Gamma$).
 
+
+$$\{F_V\}_e = \int_{\Omega_e}\rho_k\,a_k\,[N]^T\,2\pi r\,d\Omega = \int_{\Omega_e}\gamma\,[N]^T\,2\pi r\,d\Omega$$
+
+
 *(Fizikalno pa velja: volumsko obremenitev, ki deluje samo v eni smeri (npr. gravitacija), lahko obravnavamo le, če deluje v osni (aksialni) smeri, sicer problem ni več osnosimetričen. Druga izjema je centrifugalna sila, ki deluje osnosimetrično v radialni smeri).*
 
+
+Enako velja za ploskovno porazdeljene obremenitve na ograji obravnavanega območja:
+
+$$\{F_p\}_e = \int_{\Gamma_e}p\,[N]^T\,2\pi r\,d\Gamma$$
+
+izračun ekvivalentnih vozliščnih sil je vezan na površino, ki jo dobimo z vrtenjem robu $\Gamma_e$ posameznega KE okoli osi, ki predstavlja osno simetrijo.
 ## 75. Kaj mora biti izpolnjeno, da lahko problem obravnavamo kot ravninsko napetostni problem?
 
 Da lahko problem obravnavamo kot ravninsko napetostni problem (v ravnini x-y), mora biti izpolnjeno naslednje:
